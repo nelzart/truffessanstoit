@@ -22,13 +22,21 @@ header {
 nav {
     z-index: 10;
 }
-
+.admin {
+    display: flex;
+    justify-content: space-between;
+}
+.admin img {
+    max-height: 100px;
+    width: auto;
+}
 nav .nav-wrapper {
     position: fixed;
     top: 0;
     height: 50px;
     width: 100% ;
     color: orangered;
+    color: red;
 }
 
 nav .logo{
@@ -156,6 +164,7 @@ nav .logoTypo{
             background-color: orangered;
             margin-top: -20px;
         }
+
 
 /* CSS BURGER MENU */
 .sandwich {
@@ -328,6 +337,10 @@ footer.page-footer{
     display: none;
 }
 
+.active1{
+    color: orangered;
+    background-color: orangered;
+  }
 .logomobile {
     display: flex;
     justify-content: center;

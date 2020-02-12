@@ -60,7 +60,7 @@ function quit(){
 
   ancres.forEach( (ancre) => {
     //pour chaque ancre on ajoute un event listener sur le click
-    ancre.addEventListener('click', (event) => {
+    ancre.addEventListener('change', (event) => {
       //lors du click on récupère l'id de la cible de l'ancre
       let targetDivId = event.target.getAttribute('targetdiv');
       //on récupère ensuite la div cible via son id

@@ -1,40 +1,20 @@
-<!-- pour la base de donnée
-truffessanstoit
-bxGiw80vg9JCXuIu
-
-        ID
-    CHIEN || CHAT || NAC => nouveau animaux de compagnie
-                => liste de choix
-    nom => string
-    genre => M ou F
-    naissance => date
-        Sterilisée ? checkbox
-        indentifié ? checkbox
-        Vacciné ? checkbox
-        Déparasité ? checkbox
-
-        Pret a rejoindre la famille ? 
-                        sinon afficher => ne pas afficher l'animal
-
-    Caractere
-        => 6 traits a rentrer max
-    
-    PHOTOS 
-        => jusqu'a 3
-
-    Adopté => si oui, retirer l'animal de la liste visible
-
-POUR L'AFFICHAGE ADMIN
-
-    LISTE DES ANIMAUX
-        => Fonction modifier
-        => Fonction supprimer -->
 <?php
-session_start();
-$titlepage = "Gestion";
+require('connexion.php');
+$dbh = dbConnect();
 
+$id = $_GET['id'];
+$sth = $dbh->prepare('SELECT * FROM animaux WHERE id = ?');
+$sth->execute(array($id));
+$animaux = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+var_dump($animaux);
+
+foreach($animaux as $animal) {        
+    $titlepage = "Modification de " .$animal['nom'];
+    
     require('includes/head.php');
 ?>
+
 <div class="container">
     <div class="row">
         <div class="col xl8 offset-xl2 s12">
@@ -42,8 +22,8 @@ $titlepage = "Gestion";
 
             <form class="z-depth-2" action="submitprocess.php" method="POST" enctype="multipart/form-data">
                 
-                <label for="nom" class="left" require>Nom de l'animal</label>
-                <input type="text" placeholder="nom" name="nom"><br>
+                <label for="nom" class="left" require></label>
+                <input type="text" placeholder="nom" name="nom" value="<?php echo $animal['nom'] ?>"><br>
 
                 <label for="type">Type
                     <select name="type" name="type" require>
@@ -52,15 +32,15 @@ $titlepage = "Gestion";
                         <option value="nac">NAC</option>
                     </select>
                 </label>
-
+<!-- faire un IF -->
                 <label for="sexe">Genre
-                    <select name="sexe" name="sexe" require>
+                    <select name="sexe" name="sexe" value="<?php echo $animal['sexe'] ?>" require>
                         <option value="male">Male</option>
                         <option value="femelle">Femelle</option>
                     </select>
                 </label>
 
-                <label for="birth" class="left">Date de Naissance</label>
+                <label for="birth" class="left" value="<?php echo $animal['birth'] ?>">Date de Naissance</label>
                     <input type="text" name="birth" class="datepicker">
                 <br>
 
@@ -141,52 +121,6 @@ $titlepage = "Gestion";
     </div>
 </div>
 
-<section class="row">
-    <div class="container">
-    <div class="col l8 offset-l2 s12">
-            <p>
-                <ul class="aide_mission z-depth-2">
-                <?php
-
-            // Connexion a la BDD
-                require('connexion.php');
-
-                $dbh = dbConnect();
-
-                $sth = $dbh->prepare('SELECT * FROM animaux WHERE id ORDER BY id DESC');
-                $sth->execute();
-                $animaux = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-                
-                foreach($animaux as $animal){
-                    
-                    require('./fonctions/affichage.php');
-
-                    echo "<li><strong>" .$animal['nom'] ." </strong><strong class='right' style='color:cornflowerblue;'> "
-                     .$animal['pret'] . " </strong> <br>" .$animal['type'] . "  " .$animal['sexe'] ." " .$age . "
-                    
-                    <strong class='right'>
-                        <a href='modification.php?id=".$animal['id']."' style='color:rgb(42, 182, 0);'>modifier </a>
-                        <a href='supprimer.php?id=".$animal['id']."' style='color:red;'>supprimer</a> 
-                    </strong><br>" 
-                    .$animal['sterilise'] . "   " .$animal['identifie'] . "   " .$animal['vaccine'] . "   " .$animal['deparasite'] . " 
-                    
-                    <br> <strong>caractère :</strong> " .$animal['caractere']. "<br> 
-                    <div class='admin'>
-                        " .$animal1. "
-                        " .$animal2. "
-                        " .$animal3. "
-                    </div></li>";
-
-                }
-                    ?>
-                </ul>
-            </p>
-        </div>  
-    </div>
-</section>
-
-
 <?php
-
-    require('includes/footer.php');
+}
+require('includes/footer.php');

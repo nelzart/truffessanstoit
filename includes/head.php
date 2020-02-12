@@ -1,3 +1,7 @@
+<?php 
+$activePage = basename($_SERVER['PHP_SELF']);
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -11,6 +15,8 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
 
+
+
     <body>
         <header>
             <nav class="hide-on-med-and-down">
@@ -19,7 +25,7 @@
                     <img class="logoTypo" src="img/logo/logotypo.png"></a>
                     
                     <ul id="nav-menu" class="right">
-                        <li><a href="./index.php">Accueil</a></li>
+                        <li style="color: orange;"><a href="./index.php">Accueil</a></li>
                         <li><a href="adoption.php">Adoptions</a></li>
                         <li><a href="aide.php">Nous Aider</a></li>
                         <li><a href="contact.php">Nous contacter</a></li>
@@ -37,6 +43,7 @@
                     <img class="logoTypo show-on-small show-on-medium hide-on-med-and-up" src="img/logo/logotypo.png"></a>
                 </div>
             </div>
+            
             
             <i id="burger" class="hide-on-med-and-up show-on-small show-on-medium" onclick="burger()">
                 <div class="sandwich">

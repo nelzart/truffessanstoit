@@ -26,11 +26,13 @@ if (
 
         // ================== VERIFICATION DE LA DATE DE NAISSANCE
         // affichage d'erreur en cas de mauvaise saisie
-        
-        $birthday = new DateTime($birth);
-        $diff = $birthday->diff(new DateTime());
-        $months = $diff->format('%m') + 12 * $diff->format('%y');
-        $birth = $months;
+        // $timestamp = strtotime($birth);
+        // $birth = $timestamp;
+
+        // $birthday = new DateTime($birth);
+        // $diff = $birthday->diff(new DateTime());
+        // $months = $diff->format('%m') + 12 * $diff->format('%y');
+        // $birth = $months;
         // if (($timestamp = strtotime($birth)) == false) {
         //     echo "Une erreur de rentrée est survenue";
         // } else {
@@ -139,7 +141,7 @@ if (
             ":vaccine" => $vaccine,
             ":deparasite" => $deparasite,
             ":pret" => $pret,
-            ":caractere" => join(",", $caractere ),
+            ":caractere" => join(", ", $caractere ),
             ":photo1" => $photo1,
             ":photo2" => $photo2,
             ":photo3" => $photo3,
