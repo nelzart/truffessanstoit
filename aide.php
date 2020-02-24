@@ -7,12 +7,26 @@ require('includes/head.php');
 <section class="row">
     <div class="col xl8 offset-xl2 l10 offset-l1 s12">
         <div class="menu2 aidePage hide-on-med-and-down">
-            <a targetdiv="Famille_accueil">Famille d'accueil</a>
+            <a targetdiv="Famille_accueil" class="active1">Famille d'accueil</a>
             <a targetdiv="benevole">Devenir Bénévole</a>
             <a targetdiv="prévisite">Les Pré-vistes</a>
             <a targetdiv="donation">Donation</a>
             <a targetdiv="parainage">Parainage</a>
         </div>
+        
+        <div class="container">
+            <div class="menu2mobile show-on-small show-on-medium hide-on-med-and-up">
+                <select>
+                    <option value="Famille_accueil" targetdiv="Famille_accueil">Famille d'accueil</option>
+                    <option value="benevole" targetdiv="benevole">Devenir Bénévole</option>
+                    <option value="prévisite" targetdiv="prévisite">Les Pré-visites</option>
+                    <option value="donation" targetdiv="donation">Donation</option>
+                    <option value="parainage" targetdiv="parainage">Parrainage</option>
+                </select> 
+            </div>
+        </div>
+
+
         <div id="Famille_accueil"class="container menuPres animated fadeInLeft delay-0.5s">     
             <p>
                 <h6><strong>Famille d'accueil</strong></h6> <br>
@@ -84,7 +98,7 @@ require('includes/head.php');
         </div>
         <div id="prévisite" class="container menuPres animated fadeInLeft delay-0.5s hide">
             <p>
-                <h6>Faire des pré-vistes</h6> <br>
+                <h6>Faire des pré-visi  tes</h6> <br>
                 Ici nous vous expliquons ce que sont les pré-visites et les post-visites. Elles sont primordiales et nous avons besoin de bénévoles pour les effectuer.
                 <ul class="collapsible popout">
                     <li>

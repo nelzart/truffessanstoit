@@ -61,17 +61,22 @@
     
 
     // pret a rejondre une famille ? Si oui, affcher, si non, ne rien afficher
+    
     if ($animal['pret'] == 1 ){
         $animal['pret'] = "pret à l'adoption";
         if ($animal['sexe'] == "femelle") {
             $animal['pret'] = "prête à l'adoption";
-        }
-    } else {
+        }} else {
         $animal['pret'] = "pas pret à l'adoption";
         if ($animal['sexe'] == "femelle") {
             $animal['pret'] = "pas prete à l'adoption";
         }
     }
+    if ($animal['adopte'] == 1 ){
+        $animal['pret'] = "adopté";
+        if ($animal['sexe'] == "femelle") {
+            $animal['pret'] = "adoptée";
+    }}
 
     // Calcule de l'age de l'animal
         $birth = $animal['birth'];    
@@ -85,3 +90,4 @@
         } else {
             $age = $months . " mois";
         }
+

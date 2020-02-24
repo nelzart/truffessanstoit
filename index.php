@@ -20,20 +20,19 @@ $titlepage = 'Accueil';
     <main class="row">
         <div class="col xl8 offset-xl2 l10 offset-l1 s12">
             <div class="menu2 hide-on-med-and-down">
-                <a targetdiv="association">Association</a>
+                <a targetdiv="association" class="active1">Association</a>
                 <a targetdiv="mission" >Mission</a>
                 <a targetdiv="Procedure" >Procédure</a>
                 <a targetdiv="Equipe" >Equipe</a>
             </div>
             <div class="menu2mobile show-on-small show-on-medium hide-on-med-and-up">
                 <select>
-                    <option targetdiv="association">Association</option>
-                    <option targetdiv="mission">Mission</option>
-                    <option targetdiv="Procedure" >Procédure</option>
-                    <option targetdiv="Equipe" >Equipe</option>
+                    <option value="association" targetdiv="association">Association</option>
+                    <option value="mission" targetdiv="mission">Mission</option>
+                    <option value="Procedure" targetdiv="Procedure">Procédure</option>
+                    <option value="Equipe" targetdiv="Equipe">Equipe</option>
                 </select>
             </div>
-            <!-- <p id="demo"></p> -->
             
             
             <div id="association" class="menuPres animated fadeInLeft delay-0.5s">
@@ -107,29 +106,28 @@ $titlepage = 'Accueil';
                         <h6>blablabla</h6>
                     </figcaption>
                 </figure>
-                <figure class="col s6 l8">
+                <figure>
                     <span class="photo"></span>
                     <figcaption>
                         <h6><strong>Nom Prenom</strong></h6>
                         <h6>blablabla</h6>
                     </figcaption>
                 </figure>
-                <figure class="col s6 l8">
+                <figure>
                     <span class="photo"></span>
                     <figcaption>
                         <h6><strong>Nom Prenom</strong></h6>
                         <h6>blablabla</h6>
                     </figcaption>
                 </figure>
-                <figure class="col s6 l8">
+                <figure>
                     <span class="photo"></span>
                     <figcaption>
                         <h6><strong>Nom Prenom</strong></h6>
                         <h6>blablabla</h6>
                     </figcaption>
                 </figure>
-
-            
+           
             </div>
             <br>
         </div></div>

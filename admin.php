@@ -14,7 +14,7 @@ bxGiw80vg9JCXuIu
         Déparasité ? checkbox
 
         Pret a rejoindre la famille ? 
-                        sinon afficher => ne pas afficher l'animal
+                        si non => ne pas afficher l'animal
 
     Caractere
         => 6 traits a rentrer max
@@ -22,7 +22,7 @@ bxGiw80vg9JCXuIu
     PHOTOS 
         => jusqu'a 3
 
-    Adopté => si oui, retirer l'animal de la liste visible
+    Adopté => si oui, retirer l'animal de la liste visible des visiteurs
 
 POUR L'AFFICHAGE ADMIN
 
@@ -31,6 +31,12 @@ POUR L'AFFICHAGE ADMIN
         => Fonction supprimer -->
 <?php
 session_start();
+// if ($_SESSION['user_id'] = $data['id']) {
+//     // header('location: ./admin.php');
+// } else {
+//     header('location: ./verification.php');
+// }
+
 $titlepage = "Gestion";
 
     require('includes/head.php');
@@ -149,7 +155,7 @@ $titlepage = "Gestion";
                 <?php
 
             // Connexion a la BDD
-                require('connexion.php');
+                require('./includes/connexion.php');
 
                 $dbh = dbConnect();
 
@@ -167,7 +173,7 @@ $titlepage = "Gestion";
                     
                     <strong class='right'>
                         <a href='modification.php?id=".$animal['id']."' style='color:rgb(42, 182, 0);'>modifier </a>
-                        <a href='supprimer.php?id=".$animal['id']."' style='color:red;'>supprimer</a> 
+                        <a href='./fonctions/suppr.php?id=".$animal['id']."' style='color:red;'>supprimer</a> 
                     </strong><br>" 
                     .$animal['sterilise'] . "   " .$animal['identifie'] . "   " .$animal['vaccine'] . "   " .$animal['deparasite'] . " 
                     

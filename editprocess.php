@@ -2,6 +2,7 @@
 // Connexion a la BDD
 require('./includes/connexion.php');
 
+
 // Verification du champ "nom de l'animal". 
 // S'il est bien rentré avec des lettres, Et s'il a bien une majuscule a son début, SINON, en mettre une.
 if (
@@ -11,6 +12,7 @@ if (
     && isset($_POST['birth'])
 ) {
     // /Déclaration des premières variables vérifiée
+    $id = $_GET['id'];
     $nom = $_POST['nom'];
     $type = $_POST['type'];
     $sexe = $_POST['sexe'];
@@ -22,7 +24,7 @@ if (
         && is_string($type)
         && is_string($sexe)
         && is_string($birth)
-    ) 
+    ){ 
         // verification des champs caracteres pour n'en faire qu'une seule entrée
         // créaction d'un tableau avec une boucle parcourant les 6 champs caracteres
         $caractere = [];
@@ -34,7 +36,7 @@ if (
                 }
             }
         }
-    }
+    
 
     // Initialisation des Checkboxes
     $sterilise = 0;
@@ -60,7 +62,9 @@ if (
     if (isset($_POST['pret'])) {
         $pret = 1;
     };
-
+    if (isset($_POST['adopte'])) {
+        $adopte = 1;
+    };
     
     // Verification des photos
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -100,28 +104,31 @@ if (
         $photo3 = isset($photos[2]) ? $photos[2] : null;
 
     }
-    
-    $dbh = dbConnect();
-    
-    $sth = $dbh->prepare('INSERT INTO animaux (nom, type, sexe, birth, sterilise, identifie, vaccine, deparasite, pret, adopte, caractere, photo1, photo2, photo3) 
-        VALUES (:nom, :type, :sexe, :birth, :sterilise, :identifie, :vaccine, :deparasite, :pret, :adopte, :caractere, :photo1, :photo2, :photo3)');
-    
-    $sth->execute(
-        [
-            ":nom" => htmlspecialchars($nom),
-            ":type" => htmlspecialchars($type),
-            ":sexe" => htmlspecialchars($sexe),
-            ":birth" => $birth,
-            ":sterilise" => $sterilise,
-            ":identifie" => $identifie,
-            ":vaccine" => $vaccine,
-            ":deparasite" => $deparasite,
-            ":pret" => $pret,
-            ":adopte" => $adopte,
-            ":caractere" => htmlspecialchars(join(", ", $caractere )),
-            ":photo1" => $photo1,
-            ":photo2" => $photo2,
-            ":photo3" => $photo3,
+    var_dump($sterilise);
+}
+$dbh = dbConnect();
+
+$sth = $dbh->prepare("UPDATE animaux SET nom = :nom, type = :type, sexe = :sexe, birth = :birth, sterilise = :sterilise, identifie = :identifie, vaccine = :vaccine, deparasite = :deparasite, pret = :pret, adopte = :adopte, caractere = :caractere, photo1 = :photo1, photo2 = :photo2, photo3 = :photo3 WHERE id = :id");
+
+$sth->execute(
+    [
+        ":nom" => $nom,
+        ":type" => $type,
+        ":sexe" => $sexe,
+        ":birth" => $birth,
+        ":sterilise" => $sterilise,
+        ":identifie" => $identifie,
+        ":vaccine" => $vaccine,
+        ":deparasite" => $deparasite,
+        ":pret" => $pret,
+        ":adopte" => $adopte,
+        ":caractere" => join(", ", $caractere ),
+        ":photo1" => $photo1,
+        ":photo2" => $photo2,
+        ":photo3" => $photo3,
+        ":id" => $id,
         ]
     );
     header('location: ./admin.php');
+        var_dump($sth->errorInfo());
+}

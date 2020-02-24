@@ -1,5 +1,13 @@
 <?php 
-$activePage = basename($_SERVER['PHP_SELF']);
+
+function pageActiveClass($page) {
+    if($page == basename($_SERVER['PHP_SELF'])) {
+        return 'active1';
+    }
+    else {
+        return '';
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -10,12 +18,10 @@ $activePage = basename($_SERVER['PHP_SELF']);
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
     </head>
-
-
 
     <body>
         <header>
@@ -25,10 +31,10 @@ $activePage = basename($_SERVER['PHP_SELF']);
                     <img class="logoTypo" src="img/logo/logotypo.png"></a>
                     
                     <ul id="nav-menu" class="right">
-                        <li style="color: orange;"><a href="./index.php">Accueil</a></li>
-                        <li><a href="adoption.php">Adoptions</a></li>
-                        <li><a href="aide.php">Nous Aider</a></li>
-                        <li><a href="contact.php">Nous contacter</a></li>
+                        <li><a href="./index.php" class="<?= pageActiveClass('index.php'); ?>">Accueil</a></li>
+                        <li><a href="adoption.php" class="<?= pageActiveClass('adoption.php'); ?>">Adoptions</a></li>
+                        <li><a href="aide.php" class="<?= pageActiveClass('aide.php'); ?>">Nous Aider</a></li>
+                        <li><a href="contact.php" class="<?= pageActiveClass('contact.php'); ?>">Nous contacter</a></li>
                         <div class="sandwich">
                             <div></div>
                             <div></div>
@@ -54,7 +60,7 @@ $activePage = basename($_SERVER['PHP_SELF']);
             </i>
                 <i id="quit" class="material-icons pulse" onclick="quit()">clear</i>
                 <div id="links" style="position:fixed">
-                    <a href="./index.php">Accueil</a>
+                    <a href="./index.php" class="<?= pageActiveClass('index.php'); ?>">Accueil</a>
                     <a href="adoption.php">Adoptions</a>
                     <a href="aide.php">Nous Aider</a>
                     <a href="contact.php">Nous Contacter</a>
