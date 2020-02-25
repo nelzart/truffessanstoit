@@ -30,14 +30,14 @@ POUR L'AFFICHAGE ADMIN
         => Fonction modifier
         => Fonction supprimer -->
 <?php
-if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
-    header('location: ./verification.php');
-    die;
-}
 
 $titlepage = "Gestion";
+require('includes/head.php');
 
-    require('includes/head.php');
+    if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+        header('location: ./verification.php');
+        die;
+    }
 ?>
 <div class="container">
     <div class="row">

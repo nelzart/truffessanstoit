@@ -1,6 +1,11 @@
 <?php
+require('includes/head.php');
 require('./includes/connexion.php');
 $dbh = dbConnect();
+
+if (!$_GET['id']) {
+    header('location: ./admin.php');
+}
 
 $id = $_GET['id'];
 $sth = $dbh->prepare('SELECT * FROM animaux WHERE id = ?');
@@ -10,7 +15,11 @@ $animaux = $sth->fetchAll(PDO::FETCH_ASSOC);
 foreach ($animaux as $animal) {
     $titlepage = "Modification de " . $animal['nom'];
 
-    require('includes/head.php');
+
+    if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+        header('location: ./verification.php');
+        die;
+    }
 ?>
 
     <div class="container">

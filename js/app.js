@@ -59,6 +59,11 @@ function displayAnchor(id) {
   const menuElements = Array.from(document.getElementsByClassName('menuPres'));
   menuElements.forEach(menuElement => menuElement.classList.add('hide'));
   anchorTarget.classList.remove('hide');
+  
+  const menuLinks = Array.from(document.querySelectorAll('.menu2 a'));
+  menuLinks.forEach(elmt => elmt.classList.remove('active1'));
+  const targetMenuLink = menuLinks.find(elmt => elmt.attributes.targetdiv.value == id);
+  targetMenuLink.classList.add('active1');
 }
 
 //on récupère toutes les ancres ayant l'attribut targetDiv
@@ -68,9 +73,6 @@ ancres.forEach((ancre) => {
   ancre.addEventListener('click', () => displayAnchor(cible));
 });
 
-if (cible = ancres) {
-  ancre.classList.add('active1');
-}
 
 //filtre les figure de classe effect-sarah selon un filtre de classe donné
 function filterSelection(filter) {

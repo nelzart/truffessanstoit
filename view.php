@@ -1,6 +1,9 @@
 <?php
 require('./includes/connexion.php');
 $dbh = dbConnect();
+if (!$_GET['id']) {
+    header('location: ./adoption.php');
+}
 
 $id = $_GET['id'];
 $sth = $dbh->prepare('SELECT * FROM animaux WHERE id = ?');
