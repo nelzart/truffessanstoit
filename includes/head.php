@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 function pageActiveClass($page) {
     if($page == basename($_SERVER['PHP_SELF'])) {

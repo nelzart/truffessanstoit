@@ -30,12 +30,10 @@ POUR L'AFFICHAGE ADMIN
         => Fonction modifier
         => Fonction supprimer -->
 <?php
-session_start();
-// if ($_SESSION['user_id'] = $data['id']) {
-//     // header('location: ./admin.php');
-// } else {
-//     header('location: ./verification.php');
-// }
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+    header('location: ./verification.php');
+    die;
+}
 
 $titlepage = "Gestion";
 
